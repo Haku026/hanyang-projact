@@ -26,7 +26,7 @@ while running:
                 
     if gamepage == 0:
         GameDisplay.blit(background1,(0,0))
-        GameDisplay.blit(start,(550,490))
+        GameDisplay.blit(start,(500,490))
         
         
 
