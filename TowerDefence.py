@@ -2,6 +2,8 @@ import pygame
 
 pygame.init()
 
+muhyun = 1
+
 # 화면 생성
 GameDisplay = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption("타워 디펜스")
