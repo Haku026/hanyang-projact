@@ -57,21 +57,6 @@ while running:
                     elif noButton.collidepoint(pygame.mouse.get_pos()):
                         esc_mode = False
 
-        #ESC키를 누르면 종료
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                esc_mode = not esc_mode
-        if esc_mode:
-            yesButton = pygame.Rect(533, 659, 321, 128)
-            noButton = pygame.Rect(1047, 650, 354, 126)
-            #게임 종료처리 or 남기처리
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    if yesButton.collidepoint(pygame.mouse.get_pos()):
-                        running = False
-                        esc_mode = False
-                    elif noButton.collidepoint(pygame.mouse.get_pos()):
-                        esc_mode = False
 
     # 화면 그리기
     if gamepage == 0:
