@@ -14,7 +14,7 @@ background2 = pygame.image.load("C:/Users/B760I/Desktop/hanyang-projact/대충 �
 sk_tower = pygame.image.load("C:/Users/B760I/Desktop/hanyang-projact/skton_arrow.png")
 sk_tower = pygame.transform.scale(sk_tower, (100, 150))
 
-#include <stdio.h>
+#include <stdio.h> sex
 
 # 폰트 설정
 font = pygame.font.Font("C:/Users/B760I/Desktop/hanyang-projact/DungGeunMo.ttf", 100)
