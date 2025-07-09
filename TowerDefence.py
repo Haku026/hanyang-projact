@@ -13,14 +13,18 @@ background1 = pygame.image.load("./대충 개쩌는 배경.png")
 background2 = pygame.image.load("./대충 개쩌는 메인화면.png")
 sk_tower = pygame.image.load("./skton_arrow.png")
 sk_tower = pygame.transform.scale(sk_tower, (100, 150))
+gameExitMes = pygame.image.load("./gameExitMes.png")
 
 #include <stdio.h> sex
 
 # 폰트 설정
-font = pygame.font.Font("./DungGeunMo.ttf", 100)
+font = pygame.font.Font("./DungGeunMo.ttf", 80)
 
 # 텍스트
 start = font.render("Press ENTER to start!!", True, (0, 0, 0))
+exitMes = font.render("게임을 종료하시겠습니까?", True, (0, 0, 0))
+exitMesTrue = font.render("네", True, (0, 0, 0))
+exitMesFalse = font.render("아니오", True, (0, 0, 0))
 
 # 버튼 위치 및 Rect
 button_pos = (1820, 250)
@@ -31,6 +35,7 @@ gamepage = 0
 running = True
 dragging_tower = False
 placed_towers = []
+esc_mode = False
 
 # 게임 루프
 while running:
@@ -53,6 +58,22 @@ while running:
                     placed_towers.append(event.pos)  # 설치 위치 저장
                     dragging_tower = False
 
+        #ESC키를 누르면 종료
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                esc_mode = not esc_mode
+        if esc_mode:
+            yesButton = pygame.Rect(533, 659, 321, 128)
+            noButton = pygame.Rect(1047, 650, 354, 126)
+            #게임 종료처리 or 남기처리
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if yesButton.collidepoint(pygame.mouse.get_pos()):
+                        running = False
+                        esc_mode = False
+                    elif noButton.collidepoint(pygame.mouse.get_pos()):
+                        esc_mode = False
+
     # 화면 그리기
     if gamepage == 0:
         GameDisplay.blit(background1, (0, 0))
@@ -74,6 +95,12 @@ while running:
             mx, my = pygame.mouse.get_pos()
             rect = sk_tower.get_rect(center=(mx, my))
             GameDisplay.blit(sk_tower, rect.topleft)
+        
+        if esc_mode:
+            GameDisplay.blit(gameExitMes, (360,203))
+            GameDisplay.blit(exitMes, (425,350))
+            GameDisplay.blit(exitMesTrue, (660, 670))
+            GameDisplay.blit(exitMesFalse, (1100, 670))
 
     # 다른 페이지가 생겨도 타워는 안 보임
 
