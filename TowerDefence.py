@@ -9,15 +9,15 @@ GameDisplay = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption("타워 디펜스")
 
 # 이미지 불러오기
-background1 = pygame.image.load("C:/Users/B760I/Desktop/hanyang-projact/대충 개쩌는 배경.png")
-background2 = pygame.image.load("C:/Users/B760I/Desktop/hanyang-projact/대충 개쩌는 메인화면.png")
-sk_tower = pygame.image.load("C:/Users/B760I/Desktop/hanyang-projact/skton_arrow.png")
+background1 = pygame.image.load("./대충 개쩌는 배경.png")
+background2 = pygame.image.load("./대충 개쩌는 메인화면.png")
+sk_tower = pygame.image.load("./skton_arrow.png")
 sk_tower = pygame.transform.scale(sk_tower, (100, 150))
 
 #include <stdio.h> sex
 
 # 폰트 설정
-font = pygame.font.Font("C:/Users/B760I/Desktop/hanyang-projact/DungGeunMo.ttf", 100)
+font = pygame.font.Font("./DungGeunMo.ttf", 100)
 
 # 텍스트
 start = font.render("Press ENTER to start!!", True, (0, 0, 0))
