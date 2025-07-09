@@ -2,6 +2,8 @@ import pygame
 
 pygame.init()
 
+muhyun = 1
+#r김후후
 # 화면 생성
 GameDisplay = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption("타워 디펜스")
@@ -12,6 +14,7 @@ background2 = pygame.image.load("./시작화면.png")
 sk_tower = pygame.image.load("./skton_arrow.png")
 sk_tower = pygame.transform.scale(sk_tower, (100, 150))
 gameExitMes = pygame.image.load("./gameExitMes.png")
+
 
 # 폰트 설정
 font = pygame.font.Font("./DungGeunMo.ttf", 80)
@@ -56,6 +59,22 @@ while running:
                     elif noButton.collidepoint(pygame.mouse.get_pos()):
                         esc_mode = False
 
+        #ESC키를 누르면 종료
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                esc_mode = not esc_mode
+        if esc_mode:
+            yesButton = pygame.Rect(533, 659, 321, 128)
+            noButton = pygame.Rect(1047, 650, 354, 126)
+            #게임 종료처리 or 남기처리
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if yesButton.collidepoint(pygame.mouse.get_pos()):
+                        running = False
+                        esc_mode = False
+                    elif noButton.collidepoint(pygame.mouse.get_pos()):
+                        esc_mode = False
+
     # 화면 그리기
     if gamepage == 0:
         GameDisplay.blit(background1, (0, 0))
@@ -70,6 +89,7 @@ while running:
             GameDisplay.blit(exitMes, (425,350))
             GameDisplay.blit(exitMesTrue, (660, 670))
             GameDisplay.blit(exitMesFalse, (1100, 670))
+
 
 
 
