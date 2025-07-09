@@ -10,7 +10,7 @@ pygame.display.set_caption("타워 디펜스")
 
 # 이미지 불러오기
 background1 = pygame.image.load("./대충 개쩌는 배경.png")
-background2 = pygame.image.load("./대충 개쩌는 메인화면.png")
+background2 = pygame.image.load("./시작화면.png")
 sk_tower = pygame.image.load("./skton_arrow.png")
 sk_tower = pygame.transform.scale(sk_tower, (100, 150))
 gameExitMes = pygame.image.load("./gameExitMes.png")
