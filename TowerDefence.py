@@ -23,7 +23,7 @@ font = pygame.font.Font("./DungGeunMo.ttf", 80)
 # 텍스트
 start = font.render("Press ENTER to start!!", True, (0, 0, 0))
 exitMes = font.render("게임을 종료하시겠습니까?", True, (0, 0, 0))
-exitMesTrue = font.render("네", True, (0, 0, 0))z
+exitMesTrue = font.render("네", True, (0, 0, 0))
 exitMesFalse = font.render("아니오", True, (0, 0, 0))
 
 
