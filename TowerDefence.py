@@ -11,6 +11,7 @@ pygame.display.set_caption("타워 디펜스")
 background1 = pygame.image.load("./대충 개쩌는 배경.png")
 background2 = pygame.image.load("./시작화면.png")
 gameExitMes = pygame.image.load("./게임종료화면.png")
+easyMapUI = pygame.image.load("./쉬운맵.png")
 
 
 # 폰트 설정
@@ -71,9 +72,6 @@ while running:
             GameDisplay.blit(exitMes, (425,350))
             GameDisplay.blit(exitMesTrue, (660, 670))
             GameDisplay.blit(exitMesFalse, (1100, 670))    
-
-
-
 
     pygame.display.update()
 
