@@ -16,6 +16,11 @@ normalMapUI = pygame.image.load("./보통맵.png")
 hardMapUI = pygame.image.load("./어려움맵.png")
 mainMenuUI = pygame.image.load("./메인메뉴 UI.png")
 
+#음악 불러오기
+mainMenuMusic = pygame.mixer.Sound("./배경음악/배경음악.mp3")
+mainMenuMusic.set_volume(0.3)  # 볼륨 설정 (0.0 ~ 1.0)
+enterSoundEffect = pygame.mixer.Sound("./배경음악/시작 효과음.wav")
+enterSoundEffect.set_volume(0.3)
 
 # 폰트 설정
 font = pygame.font.Font("./DungGeunMo.ttf", 80)
@@ -31,6 +36,7 @@ exitMesFalse = font.render("아니오", True, (0, 0, 0))
 gamepage = 0
 running = True
 esc_mode = False
+isMainMusicOn = False
 
         
 
@@ -47,14 +53,22 @@ while running:
 
         # 시작 화면에서 엔터키 입력
         if gamepage == 0:
+            isMainMusicOn = True
+            
+
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 gamepage = 1
+                enterSoundEffect.play() # 시작 효과음 재생
+        
+        if isMainMusicOn == True:
+            mainMenuMusic.play(-1)
 
 
         #ESC키를 누르면 종료
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 esc_mode = not esc_mode
+        
         if esc_mode:
             yesButton = pygame.Rect(533, 659, 321, 128)
             noButton = pygame.Rect(1047, 650, 354, 126)
