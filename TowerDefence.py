@@ -12,6 +12,8 @@ background1 = pygame.image.load("./대충 개쩌는 배경.png")
 background2 = pygame.image.load("./시작화면.png")
 gameExitMes = pygame.image.load("./게임종료화면.png")
 easyMapUI = pygame.image.load("./쉬운맵.png")
+normalMapUI = pygame.image.load("./보통맵.png")
+hardMapUI = pygame.image.load("./어려운맵.png")
 
 
 # 폰트 설정
