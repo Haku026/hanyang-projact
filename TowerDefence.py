@@ -16,11 +16,15 @@ normalMapUI = pygame.image.load("./보통맵.png")
 hardMapUI = pygame.image.load("./어려움맵.png")
 mainMenuUI = pygame.image.load("./메인메뉴 UI.png")
 
-#음악 불러오기
+# 음악 불러오기
 mainMenuMusic = pygame.mixer.Sound("./배경음악/배경음악.mp3")
-mainMenuMusic.set_volume(0.3)  # 볼륨 설정 (0.0 ~ 1.0)
+mainMenuMusic.set_volume(0.4)  # 볼륨 설정 (0.0 ~ 1.0)
+
 enterSoundEffect = pygame.mixer.Sound("./배경음악/시작 효과음.wav")
-enterSoundEffect.set_volume(0.3)
+enterSoundEffect.set_volume(1.0)
+
+mapSelectBGM = pygame.mixer.Sound("./배경음악/맵선택bgm.mp3")
+mapSelectBGM.set_volume(0.4)
 
 # 폰트 설정
 font = pygame.font.Font("./DungGeunMo.ttf", 80)
@@ -31,15 +35,15 @@ exitMes = font.render("게임을 종료하시겠습니까?", True, (0, 0, 0))
 exitMesTrue = font.render("네", True, (0, 0, 0))
 exitMesFalse = font.render("아니오", True, (0, 0, 0))
 
-
 # 상태 변수들
 gamepage = 0
 running = True
 esc_mode = False
-isMainMusicOn = False
 
-        
-
+# 음악 관련 상태 변수들
+isMainMusicOn = True
+isMainMusicEffectOn = False
+isMapSelectMusicOn = False
 
 # 게임 루프
 while running:
@@ -53,26 +57,34 @@ while running:
 
         # 시작 화면에서 엔터키 입력
         if gamepage == 0:
-            isMainMusicOn = True
-            
-
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                isMainMusicEffectOn = True
+                mainMenuMusic.stop()
+                isMapSelectMusicOn = True
                 gamepage = 1
-                enterSoundEffect.play() # 시작 효과음 재생
-        
+                
+        # 음악 발생 처리
+        if isMainMusicEffectOn == True:
+            enterSoundEffect.play()
+            isMainMusicEffectOn = False
+
         if isMainMusicOn == True:
             mainMenuMusic.play(-1)
+            isMainMusicOn = False
+
+        if isMapSelectMusicOn == True:
+            mapSelectBGM.play(-1)
+            isMapSelectMusicOn = False
 
 
-        #ESC키를 누르면 종료
+        # ESC키를 누르면 종료
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 esc_mode = not esc_mode
-        
+        # 게임 종료처리 or 남기처리
         if esc_mode:
             yesButton = pygame.Rect(533, 659, 321, 128)
             noButton = pygame.Rect(1047, 650, 354, 126)
-            #게임 종료처리 or 남기처리
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     if yesButton.collidepoint(pygame.mouse.get_pos()):
@@ -80,18 +92,19 @@ while running:
                         esc_mode = False
                     elif noButton.collidepoint(pygame.mouse.get_pos()):
                         esc_mode = False
-    
-    
+
 
 
     # 화면 그리기
+    # 메인화면
     if gamepage == 0:
         GameDisplay.blit(background1, (0, 0))
         GameDisplay.blit(start, (500, 490))
-
+    # 메인화면
     elif gamepage == 1:
         GameDisplay.blit(background2, (0, 0))
         GameDisplay.blit(mainMenuUI, (150,780))
+    
 
 
     if esc_mode:
