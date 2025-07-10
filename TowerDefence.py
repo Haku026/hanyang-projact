@@ -32,11 +32,18 @@ gamepage = 0
 running = True
 esc_mode = False
 
+        
+
+
 # 게임 루프
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        # 마우스 클릭 위치 출력
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            print(event.pos)
 
         # 시작 화면에서 엔터키 입력
         if gamepage == 0:
@@ -59,6 +66,8 @@ while running:
                         esc_mode = False
                     elif noButton.collidepoint(pygame.mouse.get_pos()):
                         esc_mode = False
+    
+    
 
 
     # 화면 그리기
@@ -68,6 +77,7 @@ while running:
 
     elif gamepage == 1:
         GameDisplay.blit(background2, (0, 0))
+        GameDisplay.blit(mainMenuUI, (150,780))
 
 
     if esc_mode:
