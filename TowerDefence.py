@@ -11,9 +11,10 @@ pygame.display.set_caption("타워 디펜스")
 background1 = pygame.image.load("./대충 개쩌는 배경.png")
 background2 = pygame.image.load("./시작화면.png")
 gameExitMes = pygame.image.load("./게임종료화면.png")
-easyMapUI = pygame.image.load("./쉬운맵.png")
+easyMapUI = pygame.image.load("./쉬움맵.png")
 normalMapUI = pygame.image.load("./보통맵.png")
-hardMapUI = pygame.image.load("./어려운맵.png")
+hardMapUI = pygame.image.load("./어려움맵.png")
+mainMenuUI = pygame.image.load("./메인메뉴 UI.png")
 
 
 # 폰트 설정
@@ -22,7 +23,7 @@ font = pygame.font.Font("./DungGeunMo.ttf", 80)
 # 텍스트
 start = font.render("Press ENTER to start!!", True, (0, 0, 0))
 exitMes = font.render("게임을 종료하시겠습니까?", True, (0, 0, 0))
-exitMesTrue = font.render("네", True, (0, 0, 0))
+exitMesTrue = font.render("네", True, (0, 0, 0))z
 exitMesFalse = font.render("아니오", True, (0, 0, 0))
 
 
