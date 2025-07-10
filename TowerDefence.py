@@ -67,11 +67,11 @@ while running:
         GameDisplay.blit(background2, (0, 0))
 
 
-        if esc_mode:
+    if esc_mode:
             GameDisplay.blit(gameExitMes, (360,203))
             GameDisplay.blit(exitMes, (425,350))
             GameDisplay.blit(exitMesTrue, (660, 670))
-            GameDisplay.blit(exitMesFalse, (1100, 670))
+            GameDisplay.blit(exitMesFalse, (1100, 670))    
 
 
 
