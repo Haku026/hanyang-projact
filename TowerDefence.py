@@ -1,4 +1,6 @@
 import pygame
+import os
+time = pygame.time.Clock()
 
 pygame.init()
 
@@ -7,7 +9,7 @@ muhyun = 1
 GameDisplay = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption("타워 디펜스")
 
-# 이미지 불러오기
+# 배경 불러오기
 background1 = pygame.image.load("./맵/대충 개쩌는 배경.png")
 background2 = pygame.image.load("./맵/시작화면.png")
 gameExitMes = pygame.image.load("./맵/게임종료화면.png")
@@ -15,6 +17,12 @@ easyMapUI = pygame.image.load("./맵/쉬움맵.png")
 normalMapUI = pygame.image.load("./맵/보통맵.png")
 hardMapUI = pygame.image.load("./맵/어려움맵.png")
 mainMenuUI = pygame.image.load("./맵/기모찌.png")
+
+# 캐릭터 불러오기
+skeleton_tower = [pygame.transform.scale(pygame.image.load(f"./타워/스켈타워/서서움직임/스켈레톤 타워{i}.png"),(128, 128)) #크기조절
+    for i in range(1, 7)
+]
+image_index = 0
 
 # 음악 불러오기
 mainMenuMusic = pygame.mixer.Sound("./배경음악/배경음악.mp3")
@@ -37,6 +45,9 @@ exitMesFalse = font.render("아니오", True, (0, 0, 0))
 
 # 상태 변수들
 gamepage = 0
+frame_delay = 150 # 몇프레임에 한번 이미지를 바꿀지 설정
+frame_timer = 0 # 프레임 카운트 변수
+frame_index = 0 # 현재 몇 번 사진으로 할 지 선택
 running = True
 esc_mode = False
     
@@ -47,6 +58,9 @@ isMapSelectMusicOn = False
 
 # 게임 루프
 while running:
+    dt = time.tick(60) # 프레임 설정
+
+    # 이벤트 처리
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -93,6 +107,13 @@ while running:
                     elif noButton.collidepoint(pygame.mouse.get_pos()):
                         esc_mode = False
 
+        
+    # 타이머 누적
+    frame_timer += dt
+    if frame_timer >= frame_delay:
+        frame_timer = 0
+        frame_index = (frame_index + 1) % len(skeleton_tower)
+
 
 
     # 화면 그리기
@@ -104,6 +125,8 @@ while running:
     elif gamepage == 1:
         GameDisplay.blit(background2, (0, 0))
         GameDisplay.blit(mainMenuUI, (150,780))
+    # 스켈레톤
+        GameDisplay.blit(skeleton_tower[frame_index], (500, 500))
     
 
 
