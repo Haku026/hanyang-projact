@@ -14,7 +14,7 @@ gameExitMes = pygame.image.load("./게임종료화면.png")
 easyMapUI = pygame.image.load("./쉬움맵.png")
 normalMapUI = pygame.image.load("./보통맵.png")
 hardMapUI = pygame.image.load("./어려움맵.png")
-mainMenuUI = pygame.image.load("./메인메뉴 UI.png")
+mainMenuUI = pygame.image.load("./기모찌.png")
 
 # 음악 불러오기
 mainMenuMusic = pygame.mixer.Sound("./배경음악/배경음악.mp3")
@@ -39,7 +39,7 @@ exitMesFalse = font.render("아니오", True, (0, 0, 0))
 gamepage = 0
 running = True
 esc_mode = False
-
+    
 # 음악 관련 상태 변수들
 isMainMusicOn = True
 isMainMusicEffectOn = False
