@@ -1,4 +1,5 @@
 import pygame
+import os
 
 pygame.init()
 
@@ -7,7 +8,7 @@ muhyun = 1
 GameDisplay = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption("타워 디펜스")
 
-# 이미지 불러오기
+# 배경 불러오기
 background1 = pygame.image.load("./맵/대충 개쩌는 배경.png")
 background2 = pygame.image.load("./맵/시작화면.png")
 gameExitMes = pygame.image.load("./맵/게임종료화면.png")
@@ -15,6 +16,9 @@ easyMapUI = pygame.image.load("./맵/쉬움맵.png")
 normalMapUI = pygame.image.load("./맵/보통맵.png")
 hardMapUI = pygame.image.load("./맵/어려움맵.png")
 mainMenuUI = pygame.image.load("./맵/기모찌.png")
+
+# 캐릭터 불러오기
+skeleton_tower = [pygame.image.load(f"./타워/스켈레톤 타워/스켈레톤타워{i}.png") for i in range(1, 5)]
 
 # 음악 불러오기
 mainMenuMusic = pygame.mixer.Sound("./배경음악/배경음악.mp3")
@@ -47,6 +51,8 @@ isMapSelectMusicOn = False
 
 # 게임 루프
 while running:
+
+    # 이벤트 처리
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
