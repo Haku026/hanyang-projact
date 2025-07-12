@@ -8,13 +8,13 @@ GameDisplay = pygame.display.set_mode((1920, 1080))
 pygame.display.set_caption("타워 디펜스")
 
 # 이미지 불러오기
-background1 = pygame.image.load("./대충 개쩌는 배경.png")
-background2 = pygame.image.load("./시작화면.png")
-gameExitMes = pygame.image.load("./게임종료화면.png")
-easyMapUI = pygame.image.load("./쉬움맵.png")
-normalMapUI = pygame.image.load("./보통맵.png")
-hardMapUI = pygame.image.load("./어려움맵.png")
-mainMenuUI = pygame.image.load("./기모찌.png")
+background1 = pygame.image.load("./맵/대충 개쩌는 배경.png")
+background2 = pygame.image.load("./맵/시작화면.png")
+gameExitMes = pygame.image.load("./맵/게임종료화면.png")
+easyMapUI = pygame.image.load("./맵/쉬움맵.png")
+normalMapUI = pygame.image.load("./맵/보통맵.png")
+hardMapUI = pygame.image.load("./맵/어려움맵.png")
+mainMenuUI = pygame.image.load("./맵/기모찌.png")
 
 # 음악 불러오기
 mainMenuMusic = pygame.mixer.Sound("./배경음악/배경음악.mp3")
@@ -27,7 +27,7 @@ mapSelectBGM = pygame.mixer.Sound("./배경음악/맵선택bgm.mp3")
 mapSelectBGM.set_volume(0.4)
 
 # 폰트 설정
-font = pygame.font.Font("./DungGeunMo.ttf", 80)
+font = pygame.font.Font("./폰트/DungGeunMo.ttf", 80)
 
 # 텍스트
 start = font.render("Press ENTER to start!!", True, (0, 0, 0))
