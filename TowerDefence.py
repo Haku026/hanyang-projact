@@ -46,7 +46,7 @@ exitMesFalse = font.render("아니오", True, (0, 0, 0))
 
 # 상태 변수들
 gamepage = 0
-frame_delay = 150 # 몇프레임에 한번 이미지를 바꿀지 설정
+frame_delay = 100 # 몇프레임에 한번 이미지를 바꿀지 설정
 frame_timer = 0 # 프레임 카운트 변수
 frame_index = 0 # 현재 몇 번 사진으로 할 지 선택
 running = True
