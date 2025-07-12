@@ -20,8 +20,9 @@ mainMenuUI = pygame.image.load("./맵/기모찌.png")
 
 # 캐릭터 불러오기
 skeleton_tower = [pygame.transform.scale(pygame.image.load(f"./타워/스켈타워/서서움직임/스켈레톤 타워{i}.png"),(128, 128)) #크기조절
-    for i in range(1, 7)
-]
+    for i in range(1, 7)]
+goblin_tower = [pygame.transform.scale(pygame.image.load(f"./타워/고블린타워/서서움직임/고블린 타워{i}.png"),(128, 128)) #크기조절
+    for i in range(1, 7)]  
 image_index = 0
 
 # 음악 불러오기
@@ -112,7 +113,7 @@ while running:
     frame_timer += dt
     if frame_timer >= frame_delay:
         frame_timer = 0
-        frame_index = (frame_index + 1) % len(skeleton_tower)
+        frame_index = (frame_index + 1) % 6
 
 
 
@@ -125,8 +126,9 @@ while running:
     elif gamepage == 1:
         GameDisplay.blit(background2, (0, 0))
         GameDisplay.blit(mainMenuUI, (150,780))
-    # 스켈레톤
+    # 타워 그리기
         GameDisplay.blit(skeleton_tower[frame_index], (500, 500))
+        GameDisplay.blit(goblin_tower[frame_index], (800, 500))
     
 
 
