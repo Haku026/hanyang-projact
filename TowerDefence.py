@@ -66,7 +66,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        # 마우스 클릭 위치 출력
+        # 마우스 클릭 위치 출력(어디에 놓을지 편의성을 위해)
         if event.type == pygame.MOUSEBUTTONDOWN:
             print(event.pos)
 
@@ -107,15 +107,12 @@ while running:
                         esc_mode = False
                     elif noButton.collidepoint(pygame.mouse.get_pos()):
                         esc_mode = False
-
         
     # 타이머 누적
     frame_timer += dt
     if frame_timer >= frame_delay:
         frame_timer = 0
         frame_index = (frame_index + 1) % 6
-
-
 
     # 화면 그리기
     # 메인화면
